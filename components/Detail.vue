@@ -20,7 +20,7 @@
         </header>
         <main>
           <div class="mb-3 bg-white rounded-lg">
-            <img :src="pokemon.p.sprites.front_default" loading="lazy" alt="" class="h-40 mx-auto">
+            <img :src="pokemon.p.sprites.front_default" loading="lazy" alt="" class="h-40 mx-auto" />
           </div>
           <div class="mb-3 font-bold">
             <p v-if="pokemon.species.is_baby">Baby</p>
@@ -33,7 +33,7 @@
           <p>Abilities</p>
           <ul>
             <li v-for="(ability, k) in abilities" :key="k">
-              <strong>{{ ability.name }}</strong>:
+              <strong>{{ ability.name }}:</strong>
               <span v-if="ability.effect_entries[0]">{{ ability.effect_entries[0].short_effect }}</span>
             </li>
           </ul>
@@ -44,35 +44,37 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { PropType } from 'vue/types'
-import { Ability, PokemonAbility, VerboseEffect } from 'pokenode-ts'
-import { ZukanPokemon } from '../types'
+  import Vue from 'vue'
+  import { PropType } from 'vue/types'
+  import { Ability, PokemonAbility, VerboseEffect } from 'pokenode-ts'
+  import { ZukanPokemon } from '../types'
 
-export default Vue.extend({
-  name: 'Detail',
-  props: {
-    pokemon: {
-      type: Object as PropType<ZukanPokemon>,
-      required: true,
-    }
-  },
-  data() {
-    return {
-      abilities: [] as Ability[],
-    }
-  },
-  async mounted() {
-    await this.updatePokemon()
-  },
-  methods: {
-    async updatePokemon() {
-      this.abilities = await Promise.all(this.pokemon.p.abilities.map(async (pokemonAbility: PokemonAbility) => {
-        const ability = await this.$axios.$get(pokemonAbility.ability.url)
-        ability.effect_entries = ability.effect_entries.filter((effect: VerboseEffect) => effect.language.name === 'en')
-        return ability
-      }))
-    }
-  }
-})
+  export default Vue.extend({
+    name: 'Detail',
+    props: {
+      pokemon: {
+        type: Object as PropType<ZukanPokemon>,
+        required: true,
+      },
+    },
+    data() {
+      return {
+        abilities: [] as Ability[],
+      }
+    },
+    async mounted() {
+      await this.updatePokemon()
+    },
+    methods: {
+      async updatePokemon() {
+        this.abilities = await Promise.all(
+          this.pokemon.p.abilities.map(async (pokemonAbility: PokemonAbility) => {
+            const ability = await this.$axios.$get(pokemonAbility.ability.url)
+            ability.effect_entries = ability.effect_entries.filter((effect: VerboseEffect) => effect.language.name === 'en')
+            return ability
+          }),
+        )
+      },
+    },
+  })
 </script>

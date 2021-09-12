@@ -26,30 +26,30 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { mapState, mapActions } from 'vuex'
+  import Vue from 'vue'
+  import { mapState, mapActions } from 'vuex'
 
-export default Vue.extend({
-  name: 'FilterForm',
-  computed: {
-    ...mapState(['pokemonTypes', 'habitats', 'habitatFilter', 'nameFilter', 'typeFilter'])
-  },
-  methods: {
-    ...mapActions(['updateNameFilter', 'updateTypeFilter', 'updateHabitatFilter']),
-    changeNameFilter(event: Event) {
-      const value = (event.target as HTMLInputElement).value
-      this.updateNameFilter(value)
+  export default Vue.extend({
+    name: 'FilterForm',
+    computed: {
+      ...mapState(['pokemonTypes', 'habitats', 'habitatFilter', 'nameFilter', 'typeFilter']),
     },
-    changeTypeFilter(event: Event) {
-      const value = (event.target as HTMLSelectElement).value
-      this.updateTypeFilter(value)
+    methods: {
+      ...mapActions(['updateNameFilter', 'updateTypeFilter', 'updateHabitatFilter']),
+      changeNameFilter(event: Event) {
+        const value = (event.target as HTMLInputElement).value
+        this.updateNameFilter(value)
+      },
+      changeTypeFilter(event: Event) {
+        const value = (event.target as HTMLSelectElement).value
+        this.updateTypeFilter(value)
+      },
+      changeHabitatFilter(event: Event) {
+        const value = (event.target as HTMLSelectElement).value
+        this.updateHabitatFilter(value)
+      },
     },
-    changeHabitatFilter(event: Event) {
-      const value = (event.target as HTMLSelectElement).value
-      this.updateHabitatFilter(value)
-    }
-  }
-})
+  })
 </script>
 
 <style scoped>

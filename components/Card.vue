@@ -16,7 +16,7 @@
       </header>
       <main>
         <div class="mb-3 py-4 bg-white rounded-lg">
-          <img :src="pokemon.p.sprites.front_default" loading="lazy" alt="" class="h-40 mx-auto">
+          <img :src="pokemon.p.sprites.front_default" loading="lazy" alt="" class="h-40 mx-auto" />
         </div>
         <p>Habitat: {{ pokemon.species.habitat.name }}</p>
         <p>Height: {{ pokemon.p.height }} ft</p>
@@ -27,19 +27,19 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { PropType } from 'vue/types'
-import { ZukanPokemon } from '../types'
+  import Vue from 'vue'
+  import { PropType } from 'vue/types'
+  import { ZukanPokemon } from '../types'
 
-export default Vue.extend({
-  name: 'Card',
-  props: {
-    pokemon: {
-      type: Object as PropType<ZukanPokemon>,
-      required: true,
-    }
-  },
-})
+  export default Vue.extend({
+    name: 'Card',
+    props: {
+      pokemon: {
+        type: Object as PropType<ZukanPokemon>,
+        required: true,
+      },
+    },
+  })
 </script>
 
 <style scoped>

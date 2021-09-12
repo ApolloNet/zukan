@@ -14,13 +14,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import FilterForm from '../components/FilterForm.vue'
+  import Vue from 'vue'
+  import FilterForm from '../components/FilterForm.vue'
 
-export default Vue.extend({
-  name: 'DefaultLayout',
-  components: {
-    FilterForm
-  }
-})
+  export default Vue.extend({
+    name: 'DefaultLayout',
+    components: {
+      FilterForm,
+    },
+  })
 </script>
