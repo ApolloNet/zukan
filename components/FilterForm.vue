@@ -52,7 +52,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped>
   form {
     @apply flex items-center;
   }
