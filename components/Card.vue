@@ -4,7 +4,7 @@
       <header class="flex justify-between items-center mb-3">
         <h1 class="text-xl">
           <span class="text-yellow-500">#{{ pokemon.p.id }}</span>
-          <span class="text-purple-700 capitalize">{{ pokemon.p.name }}</span>
+          <span class="text-purple-700 capitalize" data-test="pokemon-name">{{ pokemon.p.name }}</span>
         </h1>
         <div>
           <ul class="flex">
