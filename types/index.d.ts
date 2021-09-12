@@ -1,7 +1,8 @@
-import { Ability, Pokemon } from 'pokenode-ts'
+import { Ability, Pokemon, PokemonSpecies } from 'pokenode-ts'
 
 export interface ZukanPokemon {
   p: Pokemon
+  species: PokemonSpecies
   types: string[]
   abilities: Ability[]
 }
