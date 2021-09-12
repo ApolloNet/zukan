@@ -34,7 +34,7 @@
       return {
         limit: 25,
         offset: 0,
-        max: 50,
+        max: 150,
         displayDetail: null as ZukanPokemon | null,
       }
     },
@@ -44,12 +44,12 @@
         return this.filterPokemons()
       },
     },
-    async mounted() {
+    async created() {
+      this.getTypes()
+      this.getHabitats()
       await this.getPokemons()
-      await this.getTypes()
-      await this.getHabitats()
-      if (this.pokemons.length < this.max) {
-        this.getPokemons()
+      while (this.pokemons.length < this.max) {
+        await this.getPokemons()
       }
     },
     methods: {

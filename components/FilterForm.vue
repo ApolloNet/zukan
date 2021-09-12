@@ -1,5 +1,6 @@
 <template>
   <form>
+    <div class="mr-5 font-bold">Filters:</div>
     <div class="formfield">
       <label for="nameFilter">Name</label>
       <input v-model="nameFilter" type="text" @keyup="changeNameFilter" />
